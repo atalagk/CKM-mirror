@@ -1,0 +1,75 @@
+archetype (adl_version=1.4; uid=7d54e960-4cf2-4d2b-9936-fb9ee406dc0a)
+	openEHR-EHR-CLUSTER.osama_ecosystem.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+
+description
+	original_author = <
+		["name"] = <"Koray Atalag">
+		["organisation"] = <"Galata-Digital">
+		["email"] = <"koray.atalag@gmail.com">
+		["date"] = <"2026-04-27">
+	>
+	lifecycle_state = <"unmanaged">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"openEHR Foundation">
+		["original_namespace"] = <"org.openehr">
+		["original_publisher"] = <"openEHR Foundation">
+		["custodian_namespace"] = <"org.openehr">
+		["MD5-CAM-1.0.1"] = <"8c2c2f36e3f6c7692c65f6c4ee8bd58b">
+		["build_uid"] = <"113ef5ed-0e69-310d-b1bb-98123a1d3c0c">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Osama_Ecosystem
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {    -- Ecosystem ID
+				value matches {
+					DV_IDENTIFIER matches {*}
+				}
+			}
+			ELEMENT[at0002] occurrences matches {0..1} matches {    -- Ecosystem Name
+				value matches {
+					DV_CODED_TEXT matches {*}
+				}
+			}
+			allow_archetype CLUSTER[at0003] occurrences matches {0..*} matches {    -- Organisation
+				include
+					archetype_id/value matches {/.*/}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Osama_Ecosystem">
+					description = <"Osama_Ecosystem">
+				>
+				["at0001"] = <
+					text = <"Ecosystem ID">
+					description = <"">
+				>
+				["at0002"] = <
+					text = <"Ecosystem Name">
+					description = <"">
+				>
+				["at0003"] = <
+					text = <"Organisation">
+					description = <"">
+				>
+			>
+		>
+	>
